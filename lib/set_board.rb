@@ -4,20 +4,21 @@ class SetBoard
 
   attr_reader :game_board
 
-  def initialize(width = 10, height = 10, ship = Ships.new(3))
+  def initialize(width = 10, height = 10, ships = [Ship.new(3), Ship.new(2)])
     @width = width
     @height = height
     @game_board = []
-    @ship = ship
+    @ships = ships
   end
 
   def create_board()
     @game_board = Array.new(@width) { Array.new(@height) }
   end
 
-  def placeShip(x,y, direction)
+  def placeShip(x,y, direction, ship_number = 0)
+    # x and y are kept true to normal coordinates on a graph, 2D array is reversed
     @game_board = @game_board.reverse
-    ship_length = @ship.size
+    ship_length = @ships[ship_number].size
     if direction == "h"
       for n in 0...ship_length
         @game_board[y - 1][x - 1 + n] = "O"

@@ -1,4 +1,4 @@
-class Ships
+class Ship
 
   attr_reader :size
 

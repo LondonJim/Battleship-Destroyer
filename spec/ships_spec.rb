@@ -1,13 +1,13 @@
 require 'ships'
 
-describe Ships do
+describe Ship do
 
   before(:each) do
-    @ship = Ships.new(3)
+    @ship = Ship.new(3)
   end
 
   it 'creates a new instantiation of SetBoard class' do
-    expect(@ship).to be_instance_of(Ships)
+    expect(@ship).to be_instance_of(Ship)
   end
 
   it 'instantiates with an empty @game_board array' do
