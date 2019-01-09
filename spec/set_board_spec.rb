@@ -33,7 +33,7 @@ describe SetBoard do
 
   describe "#placeShip" do
 
-    it 'fills array with a 2x1 ship vertically' do
+    it 'fills array with a 3x1 ship, vertical' do
       @set_board.create_board
       expect(@set_board.placeShip(1,1, "v")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
@@ -42,12 +42,12 @@ describe SetBoard do
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
-                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    ["O", nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     ["O", nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     ["O", nil, nil, nil, nil, nil, nil, nil, nil, nil]])
     end
 
-    it 'fills array with a 2x1 ship horizontally' do
+    it 'fills array with a 1x3 ship, horizontal' do
       @set_board.create_board
       expect(@set_board.placeShip(1,1, "h")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
@@ -58,7 +58,7 @@ describe SetBoard do
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
-                                                    ["O", "O", nil, nil, nil, nil, nil, nil, nil, nil]])
+                                                    ["O", "O", "O", nil, nil, nil, nil, nil, nil, nil]])
     end
   end
 
