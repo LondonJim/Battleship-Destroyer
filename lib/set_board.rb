@@ -25,4 +25,15 @@ class SetBoard
     @game_board
   end
 
+  def placeShip(x,y, direction)
+    @game_board = @game_board.reverse
+    @game_board[y-1][x-1] = "O"
+    if direction == "v"
+      @game_board[y][x-1] = "O"
+    elsif direction == "h"
+      @game_board[y-1][x] = "O"
+    end
+    @game_board = @game_board.reverse
+  end
+
 end
