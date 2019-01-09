@@ -9,8 +9,7 @@ class SetBoard
   end
 
   def create_board()
-    col_pos = 1
-    row_pos = 1
+    col_pos = row_pos = 1
     board_row = []
 
     while col_pos <= @width do
