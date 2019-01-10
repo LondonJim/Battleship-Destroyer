@@ -23,9 +23,6 @@ class DisplayBoard
         print index + 1
         index >= 9 ? (print "  ") : (print "   ")
       }
-
-
-
   end
 
 end

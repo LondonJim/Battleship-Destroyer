@@ -60,6 +60,16 @@ describe SetBoard do
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     ["O", "O", "O", nil, nil, nil, nil, nil, nil, nil]])
     end
+
+    it 'warns if ship placement is out of bounds on x axis' do
+      @set_board.create_board
+      expect{ @set_board.placeShip(8,1, "h") }.to output("Can not place ship there\n").to_stdout
+    end
+
+    it 'warns if ship placement is out of bounds on x axis' do
+      @set_board.create_board
+      expect{ @set_board.placeShip(1,8, "v") }.to output("Can not place ship there\n").to_stdout
+    end
   end
 
 end

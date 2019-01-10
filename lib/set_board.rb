@@ -19,6 +19,9 @@ class SetBoard
     # x and y are kept true to normal coordinates on a graph, 2D array is reversed
     @game_board = @game_board.reverse
     ship_length = @ships[ship_number].size
+
+    placement_check(x, y, direction, ship_length) ? nil : (puts "Can not place ship there"; return)
+
     if direction == "h"
       for n in 0...ship_length
         @game_board[y - 1][x - 1 + n] = "O"
@@ -29,6 +32,18 @@ class SetBoard
       end
     end
     @game_board = @game_board.reverse
+  end
+
+  private
+  
+  def placement_check(x, y, direction, ship_length)
+    if direction == "h"
+      return (x + ship_length) < @width
+    elsif direction == "v"
+      return (y + ship_length) < @height
+    else
+      false
+    end
   end
 
 end
