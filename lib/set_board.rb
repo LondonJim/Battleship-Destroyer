@@ -15,7 +15,7 @@ class SetBoard
     @game_board = Array.new(@width) { Array.new(@height) }
   end
 
-  def placeShip(x,y, direction, ship_number = 0)
+  def placeShip(x, y, direction, ship_number = 0)
     # x and y are kept true to normal coordinates on a graph, 2D array is reversed
     @game_board = @game_board.reverse
     ship_length = @ships[ship_number].size
