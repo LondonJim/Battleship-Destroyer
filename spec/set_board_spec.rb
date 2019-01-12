@@ -70,6 +70,12 @@ describe SetBoard do
       @set_board.create_board
       expect{ @set_board.placeShip(1,8, "v") }.to output("Can not place ship there\n").to_stdout
     end
+
+    it 'warns if ship placement overlaps another ship placement' do
+      @set_board.create_board
+      @set_board.placeShip(1,1, "h")
+      expect{ @set_board.placeShip(1,1, "v") }.to output("Can not place ship there\n").to_stdout
+    end
   end
 
 end

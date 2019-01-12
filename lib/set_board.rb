@@ -20,7 +20,7 @@ class SetBoard
     @game_board = @game_board.reverse
     ship_length = @ships[ship_number].size
 
-    placement_check(x, y, direction, ship_length) ? nil : (puts "Can not place ship there"; return)
+    (boundary_check(x, y, direction, ship_length) && overlap_check(x, y, direction, ship_length)) ? nil : (puts "Can not place ship there"; return)
 
     if direction == "h"
       for n in 0...ship_length
@@ -35,12 +35,26 @@ class SetBoard
   end
 
   private
-  
-  def placement_check(x, y, direction, ship_length)
+
+  def boundary_check(x, y, direction, ship_length)
     if direction == "h"
       return (x + ship_length) < @width
     elsif direction == "v"
       return (y + ship_length) < @height
+    else
+      false
+    end
+  end
+
+  def overlap_check(x, y, direction, ship_length)
+    if direction == "h"
+      for n in 0...ship_length
+        return @game_board[y - 1][x - 1 + n] != "O"
+      end
+    elsif direction == "v"
+      for n in 0...ship_length
+        return @game_board[y - 1 + n][x - 1] != "O"
+      end
     else
       false
     end

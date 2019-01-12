@@ -1,7 +1,6 @@
 class DisplayBoard
 
   def view_board(board)
-    # board = board.reverse
     total_rows = board.length
       board.each { |row|
         print "  "
