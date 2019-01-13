@@ -17,6 +17,7 @@ class SetBoard
   end
 
   def place_ship(x, y, direction)
+    finish_placement? ? (puts "All ships placed" ; return) : nil
     # x and y are kept true to normal coordinates on a graph, 2D array is reversed
     @game_board = @game_board.reverse
     ship_length = @ships[@ship_number].size
@@ -33,7 +34,7 @@ class SetBoard
         @game_board[y - 1 + n][x - 1] = "O"
       end
     end
-    finish_placement?
+    @ship_number += 1
     @game_board = @game_board.reverse
   end
 
@@ -64,7 +65,7 @@ class SetBoard
   end
 
   def finish_placement?
-    @ships.length == @ship_number + 1 ? true : false
+    @ships.length <= @ship_number ? (return true) : (return false)
   end
 
 end

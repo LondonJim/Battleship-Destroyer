@@ -82,6 +82,13 @@ describe SetBoard do
       @set_board.place_ship(1,1, "v")
       expect{ @set_board.place_ship(1,1, "h") }.to output("Can not place ship there\n").to_stdout
     end
+
+    it 'returns no game_board if all ships are already placed' do
+      @set_board.create_board
+      @set_board.place_ship(1,1, "v")
+      @set_board.place_ship(2,1, "v")
+      expect{ @set_board.place_ship(3,1, "v") }.to output("All ships placed\n").to_stdout
+    end
   end
 
 end
