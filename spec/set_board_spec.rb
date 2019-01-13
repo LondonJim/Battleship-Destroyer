@@ -35,7 +35,7 @@ describe SetBoard do
 
     it 'fills array with a 3x1 ship, vertical' do
       @set_board.create_board
-      expect(@set_board.placeShip(1,1, "v")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+      expect(@set_board.place_ship(1,1, "v")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
@@ -49,7 +49,7 @@ describe SetBoard do
 
     it 'fills array with a 1x3 ship, horizontal' do
       @set_board.create_board
-      expect(@set_board.placeShip(1,1, "h")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+      expect(@set_board.place_ship(1,1, "h")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
@@ -63,18 +63,24 @@ describe SetBoard do
 
     it 'warns if ship placement is out of bounds on x axis' do
       @set_board.create_board
-      expect{ @set_board.placeShip(8,1, "h") }.to output("Can not place ship there\n").to_stdout
+      expect{ @set_board.place_ship(8,1, "h") }.to output("Can not place ship there\n").to_stdout
     end
 
-    it 'warns if ship placement is out of bounds on x axis' do
+    it 'warns if ship placement is out of bounds on y axis' do
       @set_board.create_board
-      expect{ @set_board.placeShip(1,8, "v") }.to output("Can not place ship there\n").to_stdout
+      expect{ @set_board.place_ship(1,8, "v") }.to output("Can not place ship there\n").to_stdout
     end
 
-    it 'warns if ship placement overlaps another ship placement' do
+    it 'warns if ship placement overlaps another ship placement vertically' do
       @set_board.create_board
-      @set_board.placeShip(1,1, "h")
-      expect{ @set_board.placeShip(1,1, "v") }.to output("Can not place ship there\n").to_stdout
+      @set_board.place_ship(1,1, "h")
+      expect{ @set_board.place_ship(1,1, "v") }.to output("Can not place ship there\n").to_stdout
+    end
+
+    it 'warns if ship placement overlaps another ship placement horizontally' do
+      @set_board.create_board
+      @set_board.place_ship(1,1, "v")
+      expect{ @set_board.place_ship(1,1, "h") }.to output("Can not place ship there\n").to_stdout
     end
   end
 

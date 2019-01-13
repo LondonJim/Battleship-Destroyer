@@ -9,18 +9,20 @@ class SetBoard
     @height = height
     @game_board = []
     @ships = ships
+    @ship_number = 0
   end
 
   def create_board()
     @game_board = Array.new(@width) { Array.new(@height) }
   end
 
-  def placeShip(x, y, direction, ship_number = 0)
+  def place_ship(x, y, direction)
     # x and y are kept true to normal coordinates on a graph, 2D array is reversed
     @game_board = @game_board.reverse
-    ship_length = @ships[ship_number].size
+    ship_length = @ships[@ship_number].size
 
-    (boundary_check(x, y, direction, ship_length) && overlap_check(x, y, direction, ship_length)) ? nil : (puts "Can not place ship there"; return)
+    (boundary_check(x, y, direction, ship_length) &&
+      overlap_check(x, y, direction, ship_length)) ? nil : (puts "Can not place ship there"; return)
 
     if direction == "h"
       for n in 0...ship_length
@@ -31,6 +33,7 @@ class SetBoard
         @game_board[y - 1 + n][x - 1] = "O"
       end
     end
+    finish_placement?
     @game_board = @game_board.reverse
   end
 
@@ -58,6 +61,10 @@ class SetBoard
     else
       false
     end
+  end
+
+  def finish_placement?
+    @ships.length == @ship_number + 1 ? true : false
   end
 
 end
