@@ -25,8 +25,6 @@ class SetBoard
     (boundary_check(x, y, direction, ship_length) &&
       overlap_check(x, y, direction, ship_length)) ? nil : (puts "Can not place ship there"; return)
 
-    set_ship_variables(x, y, direction)
-
     if direction == "h"
       for n in 0...ship_length
         @game_board[y - 1][x - 1 + n] = @ship_number
@@ -68,13 +66,6 @@ class SetBoard
 
   def finish_placement?
     @ships.length <= @ship_number ? (return true) : (return false)
-  end
-
-  def set_ship_variables(x, y, direction)
-    ship = @ships[@ship_number]
-    ship.x_coordinate = x
-    ship.y_coordinate = y
-    ship.direction = direction
   end
 
 end
