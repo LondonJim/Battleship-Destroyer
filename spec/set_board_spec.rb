@@ -33,18 +33,19 @@ describe SetBoard do
 
   describe "#placeShip" do
 
-    it 'fills array with a 3x1 ship, vertical' do
+    it 'fills array with a 2 ships' do
       @set_board.create_board
-      expect(@set_board.place_ship(1,1, "v")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+      @set_board.place_ship(3,1, "v")
+      expect(@set_board.place_ship(2,1, "v")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
-                                                    ["O", nil, nil, nil, nil, nil, nil, nil, nil, nil],
-                                                    ["O", nil, nil, nil, nil, nil, nil, nil, nil, nil],
-                                                    ["O", nil, nil, nil, nil, nil, nil, nil, nil, nil]])
+                                                    [nil, nil, 0, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, 1, 0, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, 1, 0, nil, nil, nil, nil, nil, nil, nil]])
     end
 
     it 'fills array with a 1x3 ship, horizontal' do
@@ -58,7 +59,21 @@ describe SetBoard do
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                                                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
-                                                    ["O", "O", "O", nil, nil, nil, nil, nil, nil, nil]])
+                                                    [0, 0, 0, nil, nil, nil, nil, nil, nil, nil]])
+    end
+
+    it 'fills array with a 1x3 ship,  horizontal' do
+      @set_board.create_board
+      expect(@set_board.place_ship(1,1, "h")).to eq([[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
+                                                    [0, 0, 0, nil, nil, nil, nil, nil, nil, nil]])
     end
 
     it 'warns if ship placement is out of bounds on x axis' do

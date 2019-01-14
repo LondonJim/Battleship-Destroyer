@@ -29,11 +29,11 @@ class SetBoard
 
     if direction == "h"
       for n in 0...ship_length
-        @game_board[y - 1][x - 1 + n] = "O"
+        @game_board[y - 1][x - 1 + n] = @ship_number
       end
     elsif direction == "v"
       for n in 0...ship_length
-        @game_board[y - 1 + n][x - 1] = "O"
+        @game_board[y - 1 + n][x - 1] = @ship_number
       end
     end
     @ship_number += 1
@@ -55,11 +55,11 @@ class SetBoard
   def overlap_check(x, y, direction, ship_length)
     if direction == "h"
       for n in 0...ship_length
-        return @game_board[y - 1][x - 1 + n] != "O"
+        return @game_board[y - 1][x - 1 + n] == nil
       end
     elsif direction == "v"
       for n in 0...ship_length
-        return @game_board[y - 1 + n][x - 1] != "O"
+        return @game_board[y - 1 + n][x - 1] == nil
       end
     else
       false

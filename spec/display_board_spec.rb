@@ -24,7 +24,7 @@ describe DisplayBoard do
   -----------------------------------------
 2 |   |   |   |   |   |   |   |   |   |   |
   -----------------------------------------
-1 | O | O | O |   |   |   |   |   |   |   |
+1 | 0 | 0 | 0 |   |   |   |   |   |   |   |
   -----------------------------------------
     1   2   3   4   5   6   7   8   9   10  "
 
@@ -37,7 +37,7 @@ describe DisplayBoard do
                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
                     [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
-                    ["O", "O", "O", nil, nil, nil, nil, nil, nil, nil]]
+                    [0, 0, 0, nil, nil, nil, nil, nil, nil, nil]]
   end
 
   describe "#view_board" do

@@ -9,7 +9,7 @@ class DisplayBoard
         total_rows >= 10 ? (print total_rows) : (print total_rows.to_s + " ")
         print "|"
         row.each { |el|
-          el == nil ? (print "   ") : (print " " + el + " ")
+          el == nil ? (print "   ") : (print " " + el.to_s + " ")
           print "|"
         }
         print "\n"
