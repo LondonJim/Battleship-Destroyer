@@ -1,4 +1,4 @@
-require_relative "ships"
+require_relative "ship"
 
 class SetBoard
 
