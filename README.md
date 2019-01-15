@@ -1,4 +1,4 @@
-# Submarine Destroyer
+# Battleship destroyer
 
 Based on the game BattleShips.
 
