@@ -2,12 +2,13 @@ require_relative "ship"
 
 class SetBoard
 
-  attr_reader :game_board, :placement_active
-  attr_accessor :attack_board
+  attr_reader :placement_active, :ships
 
-  def initialize(width = 10, height = 10, ships = [Ship.new(3), Ship.new(2)])
-    @width = width
-    @height = height
+  attr_accessor :game_board, :attack_board
+
+  def initialize(ships = [Ship.new(3), Ship.new(2)])
+    @width = 10
+    @height = 10
     @game_board = []
     @attack_board = []
     @ships = ships
@@ -49,9 +50,9 @@ class SetBoard
 
   def boundary_check(x, y, direction, ship_length)
     if direction == "h"
-      return (x + ship_length - 1) <= @width
+      return ((x + ship_length - 1) <= @width) && (y <= @height)
     elsif direction == "v"
-      return (y + ship_length - 1) <= @height
+      return ((y + ship_length - 1) <= @height) && (x <= @width)
     else
       false
     end
